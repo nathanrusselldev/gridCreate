@@ -1,2 +1,4 @@
-DROP DATABASE IF EXISTS user_db;
-CREATE DATABASE user_db;
+DROP DATABASE IF EXISTS grid_db;
+CREATE DATABASE grid_db;
+
+USE grid_db;

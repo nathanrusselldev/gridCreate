@@ -1,6 +1,21 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+
+router.post('/signup', async (req, res) => {
+  console.log(req.body)
+  const userData = await User.create(req.body)
+  if(userData) {
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
+      res.json({ user: userData, message: 'You are now logged in!' });
+      res.render('homepage')
+    });
+  }
+})
+
 router.post('/login', async (req, res) => {
     try {
       // Find the user who matches the posted e-mail address
@@ -46,5 +61,7 @@ router.post('/login', async (req, res) => {
       res.status(404).end();
     }
   });
+
+  
 
 module.exports = router;

@@ -11,7 +11,22 @@
 <body>
     <main>
 
-    <h1>HELLO</h1>
+    <nav>
+        <div>
+            <h1>
+                GridCreate
+            </h1>
+            <ul>
+                {{#if logged_in}}
+                <a href="/userProfile" class="nav-btn" id="useProf">Profile</a>
+                <a href="/logout" id="logout">Logout</a>
+                <a href="/createGrid">Create Grid</a>
+                {{else}}
+                <a href="/login" class="nav-btn">Log In</a>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
     {{{body}}}
 
 
@@ -19,7 +34,11 @@
 
     </main>
 
-
-    
+  
+  <script src="/js/index.js"></script>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}} 
+  
 </body>
 </html>
